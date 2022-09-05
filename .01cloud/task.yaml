@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: zro-pipeline
+spec:
+  tasks:
+    - name: hello
+      taskSpec:
+        steps:
+        - image: alpine
+          script: |
+            pwd && ls
+            echo "hello world"
