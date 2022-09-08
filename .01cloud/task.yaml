@@ -1,14 +1,13 @@
 apiVersion: tekton.dev/v1beta1
-kind: Pipeline
+kind: Task
 metadata:
-  name: zro-pipeline
+  name: hello
 spec:
   workspaces:
   - name: workspace
-  tasks:
+  steps:
     - name: hello
-      workspaces:
-      - name: workspace
-        workspace: workspace
-      taskRef:
-        name: hello
+      image: alpine
+      script: |
+        echo "hello world from path $(workspaces.workspace.path)"
+        ls $(workspaces.workspace.path)
