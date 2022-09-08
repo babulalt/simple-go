@@ -3,11 +3,12 @@ kind: Pipeline
 metadata:
   name: zro-pipeline
 spec:
+  workspaces:
+  - name: workspace
   tasks:
     - name: hello
-      taskSpec:
-        steps:
-        - image: alpine
-          script: |
-            pwd && ls
-            echo "hello world"
+      workspaces:
+      - name: workspace
+        workspace: workspace
+      taskRef:
+        name: hello
