@@ -29,3 +29,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-go:${{ github.sha }}
+
+# Include the rollback.yaml file
+include:
+  - path: rollback.yaml
