@@ -1,0 +1,29 @@
+name: Rollback Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: List previous release tags
+        id: list_tags
+        run: |
+          git fetch --tags
+          git tag --sort=v:refname | tac > tags.txt
+      - name: Prompt user to select tag
+        id: get_tag
+        uses: technote-space/action-user-input@v2
+        with:
+          prompt: 'Select the tag to roll back to:'
+          options: ${{ steps.list_tags.outputs.stdout }}
+      - name: Roll back to selected tag
+        run: |
+          git reset --hard ${{ steps.get_tag.outputs.selected }}
+          git push --force

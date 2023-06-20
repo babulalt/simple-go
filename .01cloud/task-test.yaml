@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: test
+spec:
+  workspaces:
+    - name: workspace
+  steps:
+    - name: lint
+      image: golangci/golangci-lint:v1.42
+      command:
+        - sh
+        - -c
+      args:
+        - |
+          go test ./...
