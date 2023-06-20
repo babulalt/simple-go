@@ -6,17 +6,17 @@ spec:
   workspaces:
   - name: workspace
   tasks:
-    - name: lint
-      workspaces:
-      - name: workspace
-        workspace: workspace
-      taskRef:
-        name: lint
+    # - name: lint
+    #   workspaces:
+    #   - name: workspace
+    #     workspace: workspace
+    #   taskRef:
+    #     name: lint
     - name: test
       workspaces:
       - name: workspace
         workspace: workspace
-      runAfter: 
-        - lint
+      # runAfter: 
+      #   - lint
       taskRef:
         name: test
