@@ -11,3 +11,4 @@ spec:
       script: |
         echo "project from path $(workspaces.workspace.path)"
         ls $(workspaces.workspace.path)
+        sleep 1
