@@ -30,7 +30,11 @@ func main() {
 		}
 		logrus.Info("Sleep Duration:: ", dur)
 		time.Sleep(time.Duration(dur) * time.Second)
-		fmt.Fprintf(w, fmt.Sprintf("Hi %s", name))
+		userName := fmt.Sprintf("Hi %s", name)
+		_, err := fmt.Fprint(w, userName)
+		if ti != "" {
+			log.Print(err)
+		}
 	})
 	logrus.Info("Running on 8000 port...")
 	log.Fatal(http.ListenAndServe(":8080", nil))

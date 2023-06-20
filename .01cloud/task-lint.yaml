@@ -7,10 +7,13 @@ spec:
     - name: workspace
   steps:
     - name: lint
-      image: golangci/golangci-lint:v1.42
+      image: golangci/golangci-lint:v1.50.0
       command:
         - sh
         - -c
       args:
         - |
+          echo "Lint task start ...."
+          ls
           golangci-lint run ./...
+        
