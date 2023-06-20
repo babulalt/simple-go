@@ -4,13 +4,12 @@ metadata:
   name: test
 spec:
   workspaces:
-    - name: workspace
+  - name: workspace
   steps:
-    - name: lint
-      image: golangci/golangci-lint:v1.42
-      command:
-        - sh
-        - -c
-      args:
-        - |
-          go test ./...
+    - name: test
+      image: golangci/golangci-lint:v1.50.0
+      script: |
+        echo "Test task init..."
+        go test -v -coverprofile=cover.out ./...
+        go tool cover -func=cover.out
+        echo "Test completed"
