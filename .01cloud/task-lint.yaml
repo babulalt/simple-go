@@ -10,6 +10,7 @@ spec:
       image: golangci/golangci-lint:v1.50.0
       script: |
         cd $(workspaces.workspace.path)
+        ls
         echo "Lint task start..."
         golangci-lint run ./...
         echo "Lint completed"
