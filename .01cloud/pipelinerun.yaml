@@ -7,5 +7,12 @@ spec:
     name: zro-pipeline
   workspaces:
     - name: workspace
-      persistentVolumeClaim:
-        claimName: workspace
+      # persistentVolumeClaim:
+      #   claimName: workspace
+      volumeClaimTemplate:
+       spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
