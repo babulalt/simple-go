@@ -7,8 +7,6 @@ spec:
     name: zro-pipeline
   workspaces:
     - name: workspace
-      # persistentVolumeClaim:
-      #   claimName: workspace
       volumeClaimTemplate:
        spec:
         accessModes:
