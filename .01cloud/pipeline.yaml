@@ -6,12 +6,23 @@ spec:
   workspaces:
   - name: workspace
   tasks:
+    - name: git-clone
+      params:
+       - name: url
+         value: "https://github.com/Sugaml/mrc-api.git"
+      workspaces:
+      - name: workspace
+        workspace: workspace
+      taskRef:
+        name: git-clone
     - name: list
       workspaces:
       - name: workspace
         workspace: workspace
       taskRef:
         name: list
+      runAfter: 
+        - git-clone
     - name: lint
       workspaces:
       - name: workspace
