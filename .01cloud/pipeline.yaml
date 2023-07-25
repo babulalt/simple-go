@@ -9,7 +9,7 @@ spec:
     - name: git-clone
       params:
        - name: url
-         value: "https://github.com/Sugaml/mrc-api.git"
+         value: "https://github.com/babulalt/simple-go.git"
       workspaces:
       - name: workspace
         workspace: workspace
