@@ -11,21 +11,9 @@ spec:
   workspaces:
   - name: workspace
   steps:
-  - name: check-if-directory-exists
-    image: alpine
-    script: |
-      if [ -d "$(workspaces.workspace.path)" ] && [ -z "$(ls -A $(workspaces.workspace.path))" ]; then
-        echo "Directory is empty, proceeding with git clone..."
-      else
-        echo "Directory is not empty, skipping git clone..."
-        exit 0
-      fi
   - name: git-clone
     image: alpine/git
     script: |
-      git clone "$(params.url)" $(workspaces.workspace.path)
-  - name: list-contents
-    image: alpine
-    script: |
-      echo "Contents of the workspace directory:"
-      ls -al $(workspaces.workspace.path)
+      cd /workspace/workspace/
+      git clone -b main "$(params.url)" $(workspaces.workspace.path)
+      ls
