@@ -14,6 +14,6 @@ spec:
   - name: git-clone
     image: alpine/git
     script: |
-      cd /workspace/workspace/
-      git clone -b main "$(params.url)" $(workspaces.workspace.path)
+      git clone -b main "$(params.url)" $(workspaces.workspace.path)/app
+      mv $(workspaces.workspace.path)/app/* $(workspaces.workspace.path)/app/.* $(workspaces.workspace.path)
       ls
