@@ -18,7 +18,7 @@ spec:
   workspaces:
   - name: workspace
   steps:
-  - name: check-if-directory-exists
+  - name: check-directory
     image: alpine
     script: |
       if [ -d "$(workspaces.workspace.path)" ] && [ -z "$(ls -A $(workspaces.workspace.path))" ]; then
