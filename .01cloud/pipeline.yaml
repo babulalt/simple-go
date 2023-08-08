@@ -37,5 +37,6 @@ spec:
         workspace: workspace
       runAfter: 
         - lint
+        - list
       taskRef:
         name: test
